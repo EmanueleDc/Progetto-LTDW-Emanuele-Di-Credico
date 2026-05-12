@@ -1,0 +1,28 @@
+<div class="row g-4">
+    <div class="col-12 text-center">
+        <h1 class="display-4">Libri in Evidenza</h1>
+        <p class="text-muted">Scopri le ultime novità della nostra libreria</p>
+    </div>
+</div>
+
+<div class="row g-4 mt-4">
+    <[foreach]>
+    <div class="col-md-6 col-lg-4 col-xl-3">
+        <div class="rounded position-relative fruite-item border border-secondary">
+            <div class="fruite-img">
+                <img src="<[book_image]>" class="img-fluid w-100 rounded-top" alt="<[book_title]>">
+            </div>
+            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;"><[book_author]></div>
+            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                <h4><[book_title]></h4>
+                <div class="d-flex justify-content-between flex-lg-wrap">
+                    <p class="text-dark fs-5 fw-bold mb-0">€<[book_price]></p>
+                    <a href="book.php?id=<[book_id]>" class="btn border border-secondary rounded-pill px-3 text-primary">
+                        <i class="fa fa-eye me-2 text-primary"></i> Dettagli
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <[/foreach]>
+</div>

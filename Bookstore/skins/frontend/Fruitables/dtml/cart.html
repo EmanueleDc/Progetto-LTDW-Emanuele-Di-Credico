@@ -1,0 +1,63 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Prodotti</th>
+            <th scope="col">Prezzo</th>
+            <th scope="col">Quantità</th>
+            <th scope="col">Totale</th>
+            <th scope="col">Azione</th>
+          </tr>
+        </thead>
+        <tbody>
+            <[if!empty item_id]>
+            <[foreach]>
+            <tr>
+                <th scope="row">
+                    <div class="d-flex align-items-center">
+                        <p class="mb-0 mt-4"><[item_title]></p>
+                    </div>
+                </th>
+                <td><p class="mb-0 mt-4">€<[item_price]></p></td>
+                <td><p class="mb-0 mt-4"><[item_qty]></p></td>
+                <td><p class="mb-0 mt-4">€<[item_total]></p></td>
+                <td>
+                    <a href="cart.php?action=remove&id=<[item_id]>" class="btn btn-md rounded-circle bg-light border mt-4">
+                        <i class="fa fa-times text-danger"></i>
+                    </a>
+                </td>
+            </tr>
+            <[/foreach]>
+            <[/if!empty]>
+            
+            <[ifempty item_id]>
+            <tr>
+                <td colspan="5" class="text-center py-5">
+                    <p class="lead"><[cart_empty]></p>
+                    <a href="shop.php" class="btn btn-primary rounded-pill text-white px-4">Torna allo Shop</a>
+                </td>
+            </tr>
+            <[/ifempty]>
+        </tbody>
+    </table>
+</div>
+
+<div class="row g-4 justify-content-end">
+    <div class="col-8"></div>
+    <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+        <div class="bg-light rounded>
+            <div class="p-4">
+                <h1 class="display-6 mb-4">Totale <span class="fw-normal">Carrello</span></h1>
+                <div class="d-flex justify-content-between mb-4">
+                    <h5 class="mb-0 me-4">Subtotale:</h5>
+                    <p class="mb-0">€<[grand_total]></p>
+                </div>
+            </div>
+            <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                <h5 class="mb-0 ps-4 me-4">Totale</h5>
+                <p class="mb-0 pe-4">€<[grand_total]></p>
+            </div>
+            <a href="checkout.php" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Procedi al Checkout</a>
+        </div>
+    </div>
+</div>

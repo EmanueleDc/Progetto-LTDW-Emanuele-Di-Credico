@@ -1,13 +1,123 @@
-
-<!-- per fare dei test-->
-
-<div class="page-body">
-  <div class="container-xl">
-    <div class="page-wrapper-row row-deck row-cards">
-      <div class="col-12">
-        <h1>benvenuto home</h1>
-        <p>questa è la pagina home del dashboard admin</p>
+<div class="row row-cards">
+  <div class="col-sm-6 col-lg-4">
+    <div class="card card-sm">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <span class="bg-primary text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19a9 9 0 0 1 18 0" /><path d="M7 6a5 5 0 1 1 10 0a5 5 0 0 1 -10 0" /></svg></span>
+          </div>
+          <div class="col">
+            <div class="font-weight-medium"><[total_books]> Libri</div>
+            <div class="text-muted">Stock Totale</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="col-sm-6 col-lg-4">
+    <div class="card card-sm">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <span class="bg-green text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg></span>
+          </div>
+          <div class="col">
+            <div class="font-weight-medium"><[avail_books]> Titoli</div>
+            <div class="text-muted">In Catalogo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-4">
+    <div class="card card-sm">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <span class="bg-twitter text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.99 8.98l.01 -.32l.01 -.32l.01 -.32l.01 -.32" /><path d="M9 12l2 2l4 -4" /></svg></span>
+          </div>
+          <div class="col">
+            <div class="font-weight-medium"><[orders_month]> Ordini</div>
+            <div class="text-muted">Questo mese</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-6">
+    <div class="card card-sm">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <span class="bg-facebook text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /></svg></span>
+          </div>
+          <div class="col">
+            <div class="font-weight-medium"><[total_units_sold]> Libri Venduti</div>
+            <div class="text-muted">Totale storico unità</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-6">
+    <div class="card card-sm">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-auto">
+            <span class="bg-facebook text-white avatar"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /></svg></span>
+          </div>
+          <div class="col">
+            <div class="font-weight-medium">€ <[revenue]></div>
+            <div class="text-muted">Incasso Mensile</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Ultimi Ordini Ricevuti</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap datatable">
+                    <thead>
+                        <tr>
+                            <th>ID Ordine</th>
+                            <th>Cliente</th>
+                            <th>Totale</th>
+                            <th>Data</th>
+                            <th>Stato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <[foreach]>
+                        <tr>
+                            <td>#<[ord_id]></td>
+                            <td><[ord_user]></td>
+                            <td>€<[ord_total]></td>
+                            <td><[ord_date]></td>
+                            <td><span class="badge bg-success text-white"><[ord_status]></span></td>
+                        </tr>
+                        <[/foreach]>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header"><h3 class="card-title">Benvenuto nell'area di amministrazione</h3></div>
+            <div class="card-body">
+                Qui puoi gestire l'intero catalogo della libreria BookStories. 
+                Usa il menu a sinistra per aggiungere nuovi titoli, modificare quelli esistenti o monitorare le vendite.
+            </div>
+        </div>
+    </div>
 </div>
