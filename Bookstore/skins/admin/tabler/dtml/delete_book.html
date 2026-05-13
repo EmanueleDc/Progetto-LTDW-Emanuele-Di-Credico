@@ -21,7 +21,7 @@
           <td>€<[book_price]></td>
           <td><[book_stock]></td>
           <td class="text-end">
-            <form action="admin.php?page=delete_book&action=delete" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo libro?');" style="display:inline;">
+            <form action="books.php?page=delete_book&action=delete" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo libro?');" style="display:inline;">
               <input type="hidden" name="id" value="<[book_id]>">
               <button type="submit" class="btn btn-sm btn-danger">Elimina</button>
             </form>

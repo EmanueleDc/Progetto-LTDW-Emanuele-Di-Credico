@@ -21,7 +21,7 @@
           <td>€<[book_price]></td>
           <td><[book_stock]></td>
           <td class="text-end">
-            <a href="admin.php?page=edit_book&edit_id=<[book_id]>" class="btn btn-sm btn-light">Modifica</a>
+            <a href="books.php?page=edit_book&edit_id=<[book_id]>" class="btn btn-sm btn-light">Modifica</a>
           </td>
         </tr>
         <[/foreach]>
@@ -34,7 +34,7 @@
 <div class="card" id="edit-form">
   <div class="card-header"><h3 class="card-title">Modifica Libro #<[form_id]></h3></div>
   <div class="card-body">
-    <form action="admin.php?page=edit_book&action=edit" method="POST" enctype="multipart/form-data">
+    <form action="books.php?page=edit_book&action=edit" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="id" value="<[form_id]>">
       <div class="mb-3">
         <label class="form-label">Titolo</label>
@@ -95,7 +95,7 @@
       </div>
       <div class="form-footer">
         <button type="submit" class="btn btn-primary">Aggiorna Libro</button>
-        <a href="admin.php?page=edit_book" class="btn btn-link">Annulla</a>
+        <a href="books.php?page=edit_book" class="btn btn-link">Annulla</a>
       </div>
     </form>
   </div>

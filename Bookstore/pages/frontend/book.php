@@ -12,7 +12,7 @@ if (!$book) {
     redirect('shop.php');
 }
 
-// Gestione aggiunta al carrello
+//Aggiunta al carrello
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $qty = (int)($_POST['quantity'] ?? 1);
     if ($qty > 0 && $qty <= $book['stock']) {
@@ -46,8 +46,7 @@ if ($book['stock'] <= 0) {
 }
 
 $tpl->setContent('page_content', $contentTpl->get());
-$tpl->setContent('flash', getFlash());
-$tpl->setContent('cart_count', cartCount());
+populateTemplateBase($tpl);
 
 echo $tpl->close();
 ?>

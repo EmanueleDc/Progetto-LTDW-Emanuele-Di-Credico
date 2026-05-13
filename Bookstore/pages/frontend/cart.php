@@ -2,7 +2,7 @@
 require_once '../../include/template2.inc.php';
 require_once '../../include/common.php';
 
-// Gestione azioni carrello
+//Gestione azioni
 $action = $_GET['action'] ?? '';
 $id     = (int)($_GET['id'] ?? 0);
 
@@ -40,8 +40,7 @@ if (empty($cartItems)) {
 $contentTpl->setContent('grand_total', number_format($total, 2));
 
 $tpl->setContent('page_content', $contentTpl->get());
-$tpl->setContent('flash', getFlash());
-$tpl->setContent('cart_count', cartCount());
+populateTemplateBase($tpl);
 
 echo $tpl->close();
 ?>

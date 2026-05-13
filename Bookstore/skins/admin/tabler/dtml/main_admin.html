@@ -1,170 +1,232 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard - BookStories Admin</title>
-    <!-- CSS files -->
-    <link href="../../skins/admin/tabler/dist/css/tabler.min.css" rel="stylesheet"/>
-    <link href="../../skins/admin/tabler/dist/css/tabler-flags.min.css" rel="stylesheet"/>
-    <link href="../../skins/admin/tabler/dist/css/tabler-payments.min.css" rel="stylesheet"/>
-    <link href="../../skins/admin/tabler/dist/css/tabler-vendors.min.css" rel="stylesheet"/>
-    <link href="../../skins/admin/tabler/dist/css/demo.min.css" rel="stylesheet"/>
-    <style>
-      @import url('https://rsms.me/inter/inter.css');
-      :root {
-        --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-      }
-      body {
-        font-feature-settings: "cv03", "cv04", "cv11";
-      }
-      /* Stile per le notifiche in alto a destra */
-      .flash-container {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 9999;
-        min-width: 300px;
-        max-width: 400px;
-      }
-      .alert-important {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      }
-    </style>
-  </head>
-  <body>
-    <script src="../../skins/admin/tabler/dist/js/demo-theme.min.js"></script>
-    <div class="page">
-      <!-- sidebar -->
-      <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu" aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a href="../../index.php" class="navbar-brand navbar-brand-autodark">
-            <h1 class="text-primary">BookStories</h1>
-          </a>
-          <div class="collapse navbar-collapse" id="sidebar-menu">
-            <ul class="navbar-nav pt-lg-3">
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=home">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                  </span>
-                  <span class="nav-link-title">Home</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=add_book">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M5 12l7 7l7 -7" /></svg>
-                  </span>
-                  <span class="nav-link-title">Add book</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=edit_book">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
-                  </span>
-                  <span class="nav-link-title">Edit book</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=delete_book">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></svg>
-                  </span>
-                  <span class="nav-link-title">Delete book</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=orders">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M17 3.34a10 10 0 1 1 -14.99 8.98l.01 -.32l.01 -.32l.01 -.32l.01 -.32" /><path d="M9 12l2 2l4 -4" /></svg>
-                  </span>
-                  <span class="nav-link-title">Ordini</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=users">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                  </span>
-                  <span class="nav-link-title">Utenti</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=authors">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19l3.333 -9h11.334l3.333 9h-18z" /><path d="M12 3v13" /></svg>
-                  </span>
-                  <span class="nav-link-title">Autori</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="admin.php?page=categories">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h6v6h-6z" /><path d="M14 4h6v6h-6z" /><path d="M4 14h6v6h-6z" /><path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /></svg>
-                  </span>
-                  <span class="nav-link-title">Categorie</span>
-                </a>
-              </li>
-              <li class="nav-item mt-3">
-                <a class="nav-link text-danger" href="../frontend/logout.php">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" /><path d="M7 12h14l-3 -3m0 6l3 -3" /></svg>
-                  </span>
-                  <span class="nav-link-title">Logout</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </aside>
-      <div class="page-wrapper">
-        <!-- Page header -->
-        <div class="page-header d-print-none">
-          <div class="container-xl">
-            <div class="row g-2 align-items-center">
-              <div class="col">
-                <div class="page-pretitle">Overview</div>
-                <h2 class="page-title">BookStories Admin Dashboard</h2>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="page-body">
-          <div class="container-xl">
-            <div class="flash-container">
-                <[flash]>
-            </div>
-            <[page_content]>
-          </div>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Dashboard - BookStories Admin</title>
+  <!-- CSS files -->
+  <link href="../../skins/admin/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+  <link href="../../skins/admin/tabler/dist/css/tabler-flags.min.css" rel="stylesheet" />
+  <link href="../../skins/admin/tabler/dist/css/tabler-payments.min.css" rel="stylesheet" />
+  <link href="../../skins/admin/tabler/dist/css/tabler-vendors.min.css" rel="stylesheet" />
+  <link href="../../skins/admin/tabler/dist/css/demo.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://rsms.me/inter/inter.css');
 
-        <!-- Page footer -->
-        <footer class="footer footer-transparent d-print-none">
-          <div class="container-xl">
-            <div class="row text-center align-items-center flex-row-reverse">
-              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                <ul class="list-inline list-inline-dots mb-0">
-                  <li class="list-inline-item">
-                    &copy; 2026 <a href=".." class="link-secondary">BookStories</a>.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </footer>
+    :root {
+      --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+
+    body {
+      font-feature-settings: "cv03", "cv04", "cv11";
+    }
+
+    /* Stile per le notifiche in alto a destra */
+    .flash-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      min-width: 300px;
+      max-width: 400px;
+    }
+
+    .alert-important {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+
+<body>
+  <script src="../../skins/admin/tabler/dist/js/demo-theme.min.js"></script>
+  <div class="page">
+
+    <!-- sidebar -->
+    <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+          aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="../../index.php" class="navbar-brand navbar-brand-autodark">
+          <h1 class="text-primary">BookStories</h1>
+        </a>
+        <div class="collapse navbar-collapse" id="sidebar-menu">
+          <ul class="navbar-nav pt-lg-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                    <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                    <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="books.php?page=add_book">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 5l0 14" />
+                    <path d="M5 12l7 7l7 -7" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Add book</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="books.php?page=edit_book">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                    <path d="M16 5l3 3" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Edit book</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="books.php?page=delete_book">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 7l16 0" />
+                    <path d="M10 11l0 6" />
+                    <path d="M14 11l0 6" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Delete book</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="orders.php">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M17 3.34a10 10 0 1 1 -14.99 8.98l.01 -.32l.01 -.32l.01 -.32l.01 -.32" />
+                    <path d="M9 12l2 2l4 -4" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Ordini</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="users.php">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Utenti</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="authors.php">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M3 19l3.333 -9h11.334l3.333 9h-18z" />
+                    <path d="M12 3v13" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Autori</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.php">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4h6v6h-6z" />
+                    <path d="M14 4h6v6h-6z" />
+                    <path d="M4 14h6v6h-6z" />
+                    <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Categorie</span>
+              </a>
+            </li>
+            <li class="nav-item mt-3">
+              <a class="nav-link text-danger" href="../frontend/logout.php">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                    <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                  </svg>
+                </span>
+                <span class="nav-link-title">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
+    </aside>
+    <div class="page-wrapper">
+
+      <!-- Page header -->
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <h1 class="display-6 fw-bold mb-1 text-primary">Bentornato, <[logged_user_name]>!</h1>
+              <h2 class="page-title text-muted">BookStories Admin Dashboard</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="flash-container">
+            <[flash]>
+          </div>
+          <[page_content]>
+        </div>
+      </div>
+
+      <!-- Page footer -->
+      <footer class="footer footer-transparent d-print-none">
+        <div class="container-xl">
+          <div class="row text-center align-items-center flex-row-reverse">
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+              <ul class="list-inline list-inline-dots mb-0">
+                <li class="list-inline-item">
+                  &copy; 2026 <a href=".." class="link-secondary">BookStories</a>.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-   
-    <!-- Libs JS -->
-    <script src="../../skins/admin/tabler/dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
-    <!-- Tabler Core -->
-    <script src="../../skins/admin/tabler/dist/js/tabler.min.js" defer></script>
-  </body>
+  </div>
+
+  <!-- Libs JS -->
+  <script src="../../skins/admin/tabler/dist/libs/apexcharts/dist/apexcharts.min.js" defer></script>
+  <!-- Tabler Core -->
+  <script src="../../skins/admin/tabler/dist/js/tabler.min.js" defer></script>
+</body>
+
 </html>

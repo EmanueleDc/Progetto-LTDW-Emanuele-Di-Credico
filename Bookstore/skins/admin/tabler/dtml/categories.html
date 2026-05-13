@@ -1,0 +1,60 @@
+<div class="row row-cards">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Lista Categorie</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <[foreach]>
+            <tr>
+              <td><[cat_id]></td>
+              <td><strong><[cat_name]></strong></td>
+              <td>
+                <a href="categories.php?edit_id=<[cat_id]>" class="btn btn-sm btn-outline-primary">Modifica</a>
+                <form action="categories.php?action=delete_cat" method="POST" style="display:inline;" onsubmit="return confirm('Sei sicuro?');">
+                  <input type="hidden" name="id" value="<[cat_id]>">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">Elimina</button>
+                </form>
+              </td>
+            </tr>
+            <[/foreach]>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><[form_title_page]> Categoria</h3>
+      </div>
+      <div class="card-body">
+        <form action="categories.php?action=<[form_action]>" method="POST">
+          <input type="hidden" name="id" value="<[form_id]>">
+          <div class="mb-3">
+            <label class="form-label">Nome Categoria</label>
+            <input type="text" name="name" class="form-control" value="<[form_name]>" placeholder="es. Fantascienza" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Descrizione</label>
+            <textarea name="description" class="form-control" rows="4"><[form_description]></textarea>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary w-100">Salva Categoria</button>
+            <[if_edit]>
+            <a href="categories.php" class="btn btn-link w-100">Annulla Modifica</a>
+            <[/if_edit]>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header"><h3 class="card-title">Gestione Ordini</h3></div>
+  <div class="table-responsive">
+    <table class="table card-table table-vcenter text-nowrap">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Totale</th>
+          <th>Data</th>
+          <th>Stato attuale</th>
+          <th class="text-center">Azioni Rapide (Cambia Stato)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <[foreach]>
+        <tr>
+          <td>#<[ord_id]></td>
+          <td><[ord_user]></td>
+          <td>€<[ord_total]></td>
+          <td><[ord_date]></td>
+          <td>
+            <span class="badge <[badge_class]> text-white"><[ord_status]></span>
+          </td>
+          <td class="text-center">
+            <div class="btn-group">
+                <form action="orders.php?action=update_status" method="POST" class="me-1">
+                  <input type="hidden" name="id" value="<[ord_id]>">
+                  <input type="hidden" name="status" value="pending">
+                  <button type="submit" class="btn btn-sm btn-warning text-white" title="Metti in attesa">In attesa</button>
+                </form>
+                
+                <form action="orders.php?action=update_status" method="POST" class="me-1">
+                  <input type="hidden" name="id" value="<[ord_id]>">
+                  <input type="hidden" name="status" value="shipped">
+                  <button type="submit" class="btn btn-sm btn-info text-white" title="Segna come spedito">Spedito</button>
+                </form>
+                
+                <form action="orders.php?action=update_status" method="POST" class="me-1">
+                  <input type="hidden" name="id" value="<[ord_id]>">
+                  <input type="hidden" name="status" value="completed">
+                  <button type="submit" class="btn btn-sm btn-success text-white" title="Concludi ordine">Concluso</button>
+                </form>
+                
+                <form action="orders.php?action=delete" method="POST" onsubmit="return confirm('Sei sicuro di voler eliminare questo ordine?');">
+                  <input type="hidden" name="id" value="<[ord_id]>">
+                  <button type="submit" class="btn btn-sm btn-danger text-white" title="Elimina ordine">Annullato</button>
+                </form>
+            </div>
+          </td>
+        </tr>
+        <[/foreach]>
+      </tbody>
+    </table>
+  </div>
+</div>

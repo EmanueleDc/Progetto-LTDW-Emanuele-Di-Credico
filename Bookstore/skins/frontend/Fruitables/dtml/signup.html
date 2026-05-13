@@ -18,12 +18,38 @@
                     </div>
                     <div class="mb-4">
                         <label for="confirm_password" class="form-label">Conferma Password</label>
-                        <input type="password" name="confirm_password" id="confirm_password" class="form-control rounded-pill" required>
+                        <input type="password" name="confirm_password" id="confirm_password"
+                            class="form-control rounded-pill" required>
+                    </div>
+
+                    <h4 class="text-secondary mt-4 mb-3 border-bottom pb-2">Informazioni di Spedizione</h4>
+                    <div class="mb-3">
+                        <label class="form-label">Indirizzo (Via e Civico)</label>
+                        <input type="text" name="street" class="form-control rounded-pill" placeholder="Es: Via Roma 10"
+                            required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Città</label>
+                            <input type="text" name="city" class="form-control rounded-pill" placeholder="Es: Roma"
+                                required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">CAP</label>
+                            <input type="text" name="zip_code" class="form-control rounded-pill" placeholder="00100"
+                                required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Nazione</label>
+                        <input type="text" name="country" class="form-control rounded-pill" placeholder="Italia"
+                            required>
                     </div>
                     <div class="d-grid mb-3">
                         <button type="submit" class="btn btn-primary btn-lg rounded-pill text-white">Registrati</button>
                     </div>
-                    <p class="text-center mb-0">Hai già un account? <a href="login.php" class="text-primary">Accedi</a></p>
+                    <p class="text-center mb-0">Hai già un account? <a href="login.php" class="text-primary">Accedi</a>
+                    </p>
                 </form>
             </div>
         </div>

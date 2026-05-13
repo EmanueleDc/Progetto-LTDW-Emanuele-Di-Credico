@@ -1,20 +1,18 @@
 <?php
 
 class CategoryDAO {
-
     private $conn;
-
     public function __construct($conn) {
         $this->conn = $conn;
     }
 
-    /** Tutte le categorie */
+    //Tutte le categorie
     public function getAll() {
         $res  = $this->conn->query("SELECT * FROM categories ORDER BY name");
         return $res ? $res->fetch_all(MYSQLI_ASSOC) : [];
     }
 
-    /** Categoria per id */
+    //Categoria per id
     public function getById($id) {
         $stmt = $this->conn->prepare("SELECT * FROM categories WHERE id = ?");
         $stmt->bind_param('i', $id);
@@ -24,7 +22,7 @@ class CategoryDAO {
         return $row;
     }
 
-    /** Crea categoria */
+    //Crea nuova categoria
     public function create($name, $description = '') {
         $stmt = $this->conn->prepare(
             "INSERT INTO categories (name, description) VALUES (?, ?)"
@@ -36,7 +34,7 @@ class CategoryDAO {
         return $id;
     }
 
-    /** Aggiorna categoria */
+    //Aggiorna dati categoria
     public function update($id, $name, $description) {
         $stmt = $this->conn->prepare("UPDATE categories SET name = ?, description = ? WHERE id = ?");
         $stmt->bind_param('ssi', $name, $description, $id);
@@ -45,7 +43,7 @@ class CategoryDAO {
         return $ok;
     }
 
-    /** Elimina categoria */
+    //Elimina categoria
     public function delete($id) {
         $stmt = $this->conn->prepare("DELETE FROM categories WHERE id = ?");
         $stmt->bind_param('i', $id);

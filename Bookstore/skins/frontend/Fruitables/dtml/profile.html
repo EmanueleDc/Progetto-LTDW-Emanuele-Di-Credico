@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 rounded-4">
+            <div class="card-body p-5">
+                <h2 class="text-primary mb-4 border-bottom pb-3"><i class="fas fa-id-card me-2"></i>Il Mio Profilo</h2>
+
+                <form action="profile.php" method="POST">
+                    <div class="row g-4">
+                        <!-- Dati Base -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark">Username</label>
+                            <input type="text" name="username" class="form-control p-3 bg-light border-0"
+                                value="<[u_username]>" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold text-dark">Email</label>
+                            <input type="email" name="email" class="form-control p-3 bg-light border-0"
+                                value="<[u_email]>" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold text-dark">Nuova Password (lascia vuoto per non
+                                cambiare)</label>
+                            <input type="password" name="password" class="form-control p-3 bg-light border-0"
+                                placeholder="••••••••">
+                        </div>
+
+                        <!-- Indirizzo -->
+                        <h4 class="text-secondary mt-5 mb-3 border-bottom pb-2">Informazioni di Spedizione</h4>
+                        <div class="col-12">
+                            <label class="form-label fw-bold text-dark">Indirizzo (Via/Piazza e Civico)</label>
+                            <input type="text" name="street" class="form-control p-3 bg-light border-0"
+                                value="<[a_street]>" placeholder="Es: Via Roma 10">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-dark">Città</label>
+                            <input type="text" name="city" class="form-control p-3 bg-light border-0" value="<[a_city]>"
+                                placeholder="Es: Roma">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-dark">CAP</label>
+                            <input type="text" name="zip_code" class="form-control p-3 bg-light border-0"
+                                value="<[a_zip]>" placeholder="Es: 00100">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-dark">Nazione</label>
+                            <input type="text" name="country" class="form-control p-3 bg-light border-0"
+                                value="<[a_country]>" placeholder="Es: Italia">
+                        </div>
+
+                        <div class="col-12 mt-5">
+                            <button type="submit"
+                                class="btn btn-primary w-100 py-3 rounded-pill fw-bold text-white shadow-sm">
+                                AGGIORNA PROFILO
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<div class="row row-cards">
+  <div class="col-lg-8">
+    
+    <!-- Tabella Clienti -->
+    <div class="card mb-3">
+      <div class="card-header bg-blue-lt">
+        <h3 class="card-title">Gestione Clienti (Utenti Standard)</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <[foreach]>
+            <tr>
+              <td><[usr_id]></td>
+              <td><[usr_username]></td>
+              <td><[usr_email]></td>
+              <td>
+                <a href="users.php?edit_id=<[usr_id]>" class="btn btn-sm btn-outline-primary">Modifica</a>
+                <form action="users.php?action=set_role" method="POST" style="display:inline;">
+                    <input type="hidden" name="id" value="<[usr_id]>">
+                    <input type="hidden" name="role" value="admin">
+                    <button type="submit" class="btn btn-sm btn-success text-white">Rendi Admin</button>
+                </form>
+                <form action="users.php?action=delete_user" method="POST" style="display:inline;" onsubmit="return confirm('Sei sicuro?');">
+                  <input type="hidden" name="id" value="<[usr_id]>">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">Elimina</button>
+                </form>
+              </td>
+            </tr>
+            <[/foreach]>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tabella Amministratori -->
+    <div class="card border-purple">
+      <div class="card-header bg-purple-lt">
+        <h3 class="card-title">Staff Amministrativo</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <[foreach]>
+            <tr>
+              <td><[adm_id]></td>
+              <td><strong><[adm_username]></strong> <span class="badge bg-purple-lt">Admin</span></td>
+              <td><[adm_email]></td>
+              <td>
+                <a href="users.php?edit_id=<[adm_id]>" class="btn btn-sm btn-outline-primary">Modifica</a>
+                <form action="users.php?action=set_role" method="POST" style="display:inline;">
+                    <input type="hidden" name="id" value="<[adm_id]>">
+                    <input type="hidden" name="role" value="user">
+                    <button type="submit" class="btn btn-sm btn-warning text-white">Rendi Cliente</button>
+                </form>
+                <form action="users.php?action=delete_user" method="POST" style="display:inline;" onsubmit="return confirm('Sei sicuro?');">
+                  <input type="hidden" name="id" value="<[adm_id]>">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">Elimina</button>
+                </form>
+              </td>
+            </tr>
+            <[/foreach]>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-lg-4">
+    <[if_edit]>
+    <div class="card sticky-top">
+      <div class="card-header"><h3 class="card-title">Modifica Profilo Utente #<[form_id]></h3></div>
+      <div class="card-body">
+        <form action="users.php?action=edit_user" method="POST">
+          <input type="hidden" name="id" value="<[form_id]>">
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" value="<[form_username]>" disabled>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" value="<[form_email]>" required>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary w-100">Applica Modifiche</button>
+            <a href="users.php" class="btn btn-link w-100">Annulla</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <[/if_edit]>
+    
+    <[if_not_edit]>
+    <div class="card bg-light border-dashed">
+      <div class="card-body text-center py-5">
+        <div class="mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-lg text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M6.168 18.849a4 4 0 0 1 5.832 -2.849a4 4 0 0 1 5.832 2.849" /></svg>
+        </div>
+        <p class="text-muted">Seleziona un utente per modificarne i dati o cambiarne i permessi.</p>
+      </div>
+    </div>
+    <[/if_not_edit]>
+  </div>
+</div>

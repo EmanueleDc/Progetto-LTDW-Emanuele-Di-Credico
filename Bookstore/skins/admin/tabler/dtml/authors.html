@@ -1,0 +1,60 @@
+<div class="row row-cards">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header"><h3 class="card-title">Lista Autori</h3></div>
+      <div class="table-responsive">
+        <table class="table card-table table-vcenter">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <[foreach]>
+            <tr>
+              <td><[author_id]></td>
+              <td><strong><[author_name]></strong></td>
+              <td>
+                <a href="authors.php?edit_id=<[author_id]>" class="btn btn-sm btn-outline-primary">Modifica</a>
+                <form action="authors.php?action=delete_author" method="POST" style="display:inline;" onsubmit="return confirm('Sei sicuro?');">
+                  <input type="hidden" name="id" value="<[author_id]>">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">Elimina</button>
+                </form>
+              </td>
+            </tr>
+            <[/foreach]>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><[form_title_page]> Autore</h3>
+      </div>
+      <div class="card-body">
+        <form action="authors.php?action=<[form_action]>" method="POST">
+          <input type="hidden" name="id" value="<[form_id]>">
+          <div class="mb-3">
+            <label class="form-label">Nome Autore</label>
+            <input type="text" name="name" class="form-control" value="<[form_name]>" placeholder="es. Italo Calvino" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Biografia</label>
+            <textarea name="biography" class="form-control" rows="4"><[form_biography]></textarea>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary w-100">Salva Autore</button>
+            <[if_edit]>
+            <a href="authors.php" class="btn btn-link w-100">Annulla Modifica</a>
+            <[/if_edit]>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

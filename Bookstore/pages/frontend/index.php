@@ -7,7 +7,7 @@ $bookDao = new BookDAO($conn);
 $featuredBooks = $bookDao->getFeatured(8);
 
 $tpl = new Template('../../skins/frontend/Fruitables/dtml/main');
-$contentTpl = new Template('../../skins/frontend/Fruitables/dtml/index');
+$contentTpl = new Template('../../skins/frontend/Fruitables/dtml/home');
 
 foreach ($featuredBooks as $book) {
     $contentTpl->setContent('book_id',    $book['id']);
@@ -17,9 +17,9 @@ foreach ($featuredBooks as $book) {
     $contentTpl->setContent('book_author', $book['authors']);
 }
 
+populateTemplateBase($contentTpl);
 $tpl->setContent('page_content', $contentTpl->get());
-$tpl->setContent('flash', getFlash());
-$tpl->setContent('cart_count', cartCount());
+populateTemplateBase($tpl);
 
 echo $tpl->close();
 ?>

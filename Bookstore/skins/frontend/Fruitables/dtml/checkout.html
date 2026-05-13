@@ -12,11 +12,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Qui potrei mettere un loop se volessi mostrare il dettaglio anche qui, 
-                         ma per brevità mostriamo solo il totale -->
+                    <[foreach]>
                     <tr>
-                        <td colspan="3" class="text-end fw-bold">TOTALE DA PAGARE:</td>
-                        <td class="fw-bold">€<[grand_total]></td>
+                        <td class="py-4"><[item_title]></td>
+                        <td class="py-4">€<[item_price]></td>
+                        <td class="py-4"><[item_qty]></td>
+                        <td class="py-4">€<[item_total]></td>
+                    </tr>
+                    <[/foreach]>
+                    <tr>
+                        <td colspan="3" class="text-end fw-bold pt-4">TOTALE DA PAGARE:</td>
+                        <td class="fw-bold pt-4">€<[grand_total]></td>
                     </tr>
                 </tbody>
             </table>
@@ -26,8 +32,9 @@
         <div class="bg-light rounded p-5">
             <h2 class="mb-4">Dati di Spedizione</h2>
             <form action="checkout.php" method="POST">
-                <div class="mb-3">
-                    <p>L'ordine verrà inviato all'indirizzo associato al tuo profilo.</p>
+                <div class="mb-4">
+                    <p class="h5 text-primary fw-bold">Verrà consegnato in: <span class="text-dark"><[delivery_address]></span></p>
+                    <small class="text-muted">Puoi modificare l'indirizzo nel tuo profilo.</small>
                 </div>
                 <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                     <div class="col-12">

@@ -7,42 +7,57 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <h4 class="fw-bold mb-3"><[book_title]></h4>
-        <p class="mb-3 text-secondary">Autore: <span class="text-dark"><[book_author]></span></p>
-        <p class="mb-3 text-secondary">Categoria: <span class="text-dark"><[book_category]></span></p>
-        <h5 class="fw-bold mb-3">€<[book_price]></h5>
-        <p class="mb-4"><[book_description]></p>
-        
+        <h4 class="fw-bold mb-3">
+            <[book_title]>
+        </h4>
+        <p class="mb-3 text-secondary">Autore: <span class="text-dark">
+                <[book_author]>
+            </span></p>
+        <p class="mb-3 text-secondary">Categoria: <span class="text-dark">
+                <[book_category]>
+            </span></p>
+        <h5 class="fw-bold mb-3">€<[book_price]>
+        </h5>
+        <p class="mb-4">
+            <[book_description]>
+        </p>
+
         <form action="book.php?id=<[book_id]>" method="POST">
             <div class="input-group quantity mb-5" style="width: 150px;">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border" onclick="changeQty(-1)">
+                    <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border"
+                        onclick="changeQty(-1)">
                         <i class="fa fa-minus"></i>
                     </button>
                 </div>
-                <input type="number" name="quantity" id="book-qty" class="form-control form-control-sm text-center border-0" value="1" min="1" max="<[book_stock]>">
+                <input type="text" name="quantity" id="book-qty"
+                    class="form-control form-control-sm text-center border-0" value="1" readonly
+                    data-max="<[book_stock]>" inputmode="numeric">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="changeQty(1)">
+                    <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border"
+                        onclick="changeQty(1)">
                         <i class="fa fa-plus"></i>
                     </button>
                 </div>
             </div>
-            <button type="submit" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" <[out_of_stock_attr]>>
-                <i class="fa fa-shopping-bag me-2 text-primary"></i> <[btn_label]>
+            <button type="submit" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
+                <[out_of_stock_attr]>>
+                <i class="fa fa-shopping-bag me-2 text-primary"></i>
+                <[btn_label]>
             </button>
         </form>
 
         <script>
-        function changeQty(delta) {
-            const input = document.getElementById('book-qty');
-            let val = parseInt(input.value) + delta;
-            const max = parseInt(input.getAttribute('max'));
-            if (val < 1) val = 1;
-            if (val > max) val = max;
-            input.value = val;
-        }
+            function changeQty(delta) {
+                const input = document.getElementById('book-qty');
+                let val = parseInt(input.value) + delta;
+                const max = parseInt(input.getAttribute('data-max'));
+                if (val < 1) val = 1;
+                if (val > max) val = max;
+                input.value = val;
+            }
         </script>
-        
+
         <p class="text-muted"><small>ISBN: <[book_isbn]> | Disponibili: <[book_stock]></small></p>
     </div>
 </div>

@@ -30,13 +30,13 @@ $contentTpl = new Template('../../skins/frontend/Fruitables/dtml/shop');
 
 $contentTpl->setContent('search_term', $displayTerm);
 
-// Categorie sidebar
+//Menu categorie
 foreach ($categories as $cat) {
     $contentTpl->setContent('cat_id',   $cat['id']);
     $contentTpl->setContent('cat_name', $cat['name']);
 }
 
-// Lista libri
+//Elenco prodotti
 foreach ($books as $book) {
     $contentTpl->setContent('book_id',    $book['id']);
     $contentTpl->setContent('book_title', $book['title']);
@@ -46,8 +46,7 @@ foreach ($books as $book) {
 }
 
 $tpl->setContent('page_content', $contentTpl->get());
-$tpl->setContent('flash', getFlash());
-$tpl->setContent('cart_count', cartCount());
+populateTemplateBase($tpl);
 
 echo $tpl->close();
 ?>
